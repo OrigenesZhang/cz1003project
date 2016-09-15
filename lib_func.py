@@ -1,10 +1,11 @@
-#!/usr/local/bin/python3
+ #!/usr/local/bin/python3
 # _*_ coding:utf8 _*_
 
 import telepot
 import time
 from telepot.namedtuple import ReplyKeyboardMarkup,KeyboardButton,InlineKeyboardMarkup, InlineKeyboardButton
 from data_func import html,extract,ma_A,ma_B
+bot = telepot.Bot('194233496:AAFTNsUhxGYgb1ij84x0bys3Zhv3CNnE81w')
 def lib_keyboard():
 
 	tmp=ReplyKeyboardMarkup(keyboard=
@@ -111,8 +112,11 @@ def welcome_keyboard():
 	return tmp
 
 def nearest_lib(x,y): 
-	dis=pow(x-1.347757,2)+pow(y-103.680900,2)
+	dis=0
 	n=0
+	if (pow(x-1.347757,2)+pow(y-103.680900,2) < dis):
+		dis = pow(x-1.347757,2)+pow(y-103.680900,2)
+		n=0
 	if (pow(x-1.344308,2)+pow(y-103.682256,2) < dis):
 		dis = pow(x-1.344308,2)+pow(y-103.682256,2)
 		n=1
@@ -153,4 +157,5 @@ def lib_status(lib_name):
 		return 'There are only '+str(empty)+' seats available, quite crowded...'
 	else:
 		return 'There are '+str(empty)+" seats available, lots of space!"
+
 

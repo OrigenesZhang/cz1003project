@@ -13,8 +13,8 @@ lib=['LWN Lib','HSS Lib','BIZ Lib','ADM Lib','CHN Lib']
 lib_p=['LWN lib','HSS lib','BIZ lib','ADM lib','CHN lib']
 
 def on_chat_message(msg):
-	if lib_close():
-			return
+	# if lib_close():
+	# 		return
 	content_type, chat_type, chat_id = telepot.glance(msg)
 	print(content_type, chat_type, chat_id)
 	if content_type=='text':
