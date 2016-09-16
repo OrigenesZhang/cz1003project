@@ -36,8 +36,7 @@ def lib_keyboard_select(n):
 	
 	lwn_lib_keyboard=InlineKeyboardMarkup(inline_keyboard=
 		[
-		[InlineKeyboardButton(text='5F Quite Zone Sect A',callback_data='lwn')],[InlineKeyboardButton(text='5F Quite Zone Sect B',callback_data='lwn')],
-		[InlineKeyboardButton(text='5F Quite Zone Sect C',callback_data='lwn')],[InlineKeyboardButton(text='4F',callback_data='lwn')],
+		[InlineKeyboardButton(text='5F Quite Zone',callback_data='lwn')],[InlineKeyboardButton(text='4F',callback_data='lwn')],
 		[InlineKeyboardButton(text='3F',callback_data='lwn')],[InlineKeyboardButton(text='2F',callback_data='lwn')],
 		]
 		)
@@ -70,8 +69,7 @@ def lib_p_keyboard_select(n):
 	
 	lwn_lib_keyboard=InlineKeyboardMarkup(inline_keyboard=
 		[
-		[InlineKeyboardButton(text='5F Quite Zone Sect A',callback_data='lwnp')],[InlineKeyboardButton(text='5F Quite Zone Sect B',callback_data='lwnp')],
-		[InlineKeyboardButton(text='5F Quite Zone Sect C',callback_data='lwnp')],[InlineKeyboardButton(text='4F',callback_data='lwnp')],
+		[InlineKeyboardButton(text='5F Quite Zone',callback_data='lwnp')],[InlineKeyboardButton(text='4F',callback_data='lwnp')],
 		[InlineKeyboardButton(text='3F',callback_data='lwnp')],[InlineKeyboardButton(text='2F',callback_data='lwnp')],
 		]
 		)
@@ -131,20 +129,21 @@ def nearest_lib(x,y):
 		n=4
 	return n
 
-def lib_close():
+def lib_close(chat_id):
 	t=time.localtime()
-	if t.tm_wday==7:
-		bot.sendMessage(chat_id,"It's Sunday dude, all libraries are closed.\n Go relax and have fun!")
+	# t=time.strptime('Sun Sep 28 18:31:30 2016','%a %b %d %H:%M:%S %Y')
+	if t.tm_wday==6:
+		bot.sendMessage(chat_id,"It's Sunday dude, all libraries are closed.\nGo relax and have fun!\nヽ(✿ﾟ▽ﾟ)ノ")
 		return 1
 	elif 0<=t.tm_hour<=8:
-		bot.sendMessage(chat_id,"So hard-working dude! Libraries are not opened yet")
+		bot.sendMessage(chat_id,"So hard-working dude! Libraries are not opened yet.\n╮(′～‵〞)╭")
 		return 1
-	elif t.tm_wday==6: 
+	elif t.tm_wday==5: 
 		if t.tm_hour >= 17 :
-			bot.sendMessage(chat_id,"Oops, libraries have closed.")
+			bot.sendMessage(chat_id,"Oops, all libraries have closed.\n( ˘･з･)")
 			return 1
 	elif t.tm_hour >= 21:
-			bot.sendMessage(chat_id,"Oops, libraries have closed.")
+			bot.sendMessage(chat_id,"Oops, all libraries have closed.\n( ˘･з･)")
 			return 1
 	return 0	
 	
@@ -157,5 +156,8 @@ def lib_status(lib_name):
 		return 'There are only '+str(empty)+' seats available, quite crowded...'
 	else:
 		return 'There are '+str(empty)+" seats available, lots of space!"
+
+if __name__ == '__main__':
+	lib_close(123123123123123)
 
 
