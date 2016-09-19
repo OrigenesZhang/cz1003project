@@ -24,7 +24,6 @@ async def on_chat_message(msg):
 
 	if content_type=='text':
 		
-
 		if msg['text']=='Library Current Status Inquiry':
 			# await asyncio.sleep(10)
 			await bot.sendMessage(chat_id, 'Please Choose Your Library', reply_markup=lib_keyboard())
@@ -75,12 +74,15 @@ async def on_callback_query(msg):
 			await bot.sendMessage(from_id,text='In the next hour, there may be around %d people in the selected area.' % ma_B(12)) 
 		elif query_data=='chnp':
 			await bot.sendMessage(from_id,text='In the next hour, there may be around %d people in the selected area.' % ma_B(12)) 
+async def database_update():
+	while True:
+		await html()
+		await asyncio.sleep(300)
 
 bot = telepot.aio.Bot('194233496:AAFTNsUhxGYgb1ij84x0bys3Zhv3CNnE81w')
 loop=asyncio.get_event_loop()
-loop.create_task(bot.message_loop({'chat':on_chat_message,
-				  				   'callback_query':on_callback_query})
-				)
+tasks=[bot.message_loop({'chat':on_chat_message,'callback_query':on_callback_query}),database_update()]
+loop.create_task(asyncio.wait(tasks))
 
 print ('Listening ...')
 loop.run_forever()
