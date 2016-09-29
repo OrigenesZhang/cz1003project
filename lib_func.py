@@ -36,7 +36,7 @@ def lib_keyboard_select(n):
 	
 	lwn_lib_keyboard=InlineKeyboardMarkup(inline_keyboard=
 		[
-		[InlineKeyboardButton(text='5F Quite Zone',callback_data='lwn')],[InlineKeyboardButton(text='4F',callback_data='lwn')],
+		[InlineKeyboardButton(text='5F Quiet Zone',callback_data='lwn')],[InlineKeyboardButton(text='4F',callback_data='lwn')],
 		[InlineKeyboardButton(text='3F',callback_data='lwn')],[InlineKeyboardButton(text='2F',callback_data='lwn')],
 		]
 		)
